@@ -1,0 +1,437 @@
+<!--Index2.html-->
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="stylesheet" href="https://unpkg.com/phosphor-icons@2.1.1/src/css/phosphor.css" />
+  <script src="https://unpkg.com/phosphor-icons@2.1.1/src/index.js"></script>
+
+  <link rel="stylesheet" href="Style2.css">
+</head>
+
+<body>
+  <header>
+    <div class="pill-nav" role="navigation" aria-label="Primary">
+      <div class="brand">My Portfolio</div>
+      <ul class="navmenu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <!-- Dark Mode Toggle inside navbar -->
+      <button class="theme-toggle-btn" id="toggle-dark" aria-label="Toggle Dark Mode">
+        <svg id="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <svg id="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="home" id="home">
+    <div class="home-text">
+      <h1>Hello I'm Chanatip Tonngern <span class="wave">👋</span></h1>
+      <h2>"You can call me Earn"</h2>
+      <h3><span class="line"></span> Front-End Developer</h3>
+      <p>I'm Front-End based in Thailand,<br>
+        and I'm very passionate and dedicated to my work.</p>
+    </div>
+    <div class="home-img">
+      <img src="./Pictures/20191204_001430_IMG_9626.JPG" alt="Earn - Front-End developer">
+    </div>
+
+    <!-- ปุ่มเลื่อนไปบนสุด -->
+    <a href="#home" class="scroll-top" aria-label="Scroll to top">
+      <i class="ph-bold ph-arrow-up"></i>
+    </a>
+  </section>
+
+
+  <section class="about" id="about">
+    <div class="about-container">
+      <div class="about-img">
+        <img src="./Pictures/142048193_1958752827596292_4355849232095862377_n.jpg" alt="About Me Photo">
+      </div>
+      <div class="about-content">
+        <h2>About Me</h2>
+        <div class="about-row">
+          <div class="about-box">
+            <h3><i class="ph ph-user"></i> Who Am I ?</h3>
+            <p>
+              I'm a frontend developer who crafts responsive, interactive, and clean UIs.<br>
+              With a background in Civil Engineering, I blend analytical thinking with creative design to build robust
+              digital experiences.
+            </p>
+          </div>
+          <div class="about-box">
+            <h3><i class="ph ph-lightbulb"></i>My Approach</h3>
+            <p>
+              I focus on user-centered design, performance, and accessibility.<br>
+              Always evolving with modern tech to deliver seamless digital experiences.
+            </p>
+          </div>
+        </div>
+        <div class="about-row personal-info">
+          <div class="info-list">
+            <h4><i class="ph ph-info"></i> Personal Info</h4>
+            <ul>
+              <li><i class="ph ph-user"></i> <b>Name:</b> Chanatip Tonngern </li>
+              <li><i class="ph ph-nickname"></i><b>Nickname:</b> Earn </li>
+              <li><i class="ph ph-map-pin"></i> <b>Place of Birth:</b> Thailand</li>
+              <li><i class="ph ph-phone"></i> <b>Phone:</b> 091-748-4417</li>
+              <li><i class="ph ph-graduation-cap"></i> <b>GPA:</b> 2.01 </li>
+            </ul>
+          </div>
+          <div class="info-list">
+            <ul>
+              <li><i class="ph ph-calendar"></i> <b>Date of Birth:</b> 25 May 2000</li>
+              <li><i class="ph ph-envelope"></i> <b>Gmail:</b> chanatiptonngern.gmail.com </li>
+              <li><i class="ph ph-graduation-cap"></i> <b>Education:</b> Civil Engineering, Srinakharinwirot University
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills-interactive" id="skills">
+    <h2>Skills</h2>
+    <p class="skills-subtitle">Technologies & tools I use to build responsive, accessible UIs.</p>
+
+    <h3 class="skill-group-title">Languages</h3>
+    <div class="skills-grid">
+      <div class="skill-card theme-yellow">
+        <div class="overlay"></div>
+        <div class="circle">
+          <img src="./Pictures/Html-01.png" alt="HTML5" />
+        </div>
+        <p>HTML5</p>
+      </div>
+
+      <div class="skill-card theme-yellow">
+        <div class="overlay"></div>
+        <div class="circle">
+          <img src="./Pictures/CSS-01.png" alt="CSS3" />
+        </div>
+        <p>CSS3</p>
+      </div>
+
+      <div class="skill-card theme-yellow">
+        <div class="overlay"></div>
+        <div class="circle">
+          <img src="./Pictures/javascript-01.svg" alt="JavaScript" />
+        </div>
+        <p>JavaScript</p>
+      </div>
+
+    </div>
+
+    <h3 class="skill-group-title">Frameworks & Libraries</h3>
+    <div class="skills-grid">
+      <div class="skill-card theme-green">
+        <div class="overlay"></div>
+        <div class="circle">
+          <img src="./Pictures/React-01.png" alt="React" />
+        </div>
+        <p>React</p>
+      </div>
+
+      <div class="skill-card theme-green">
+        <div class="overlay"></div>
+        <div class="circle">
+          <img src="./Pictures/tailwind-01.png" alt="Tailwind" />
+        </div>
+        <p>Tailwind CSS</p>
+      </div>
+
+      <div class="skill-card theme-green">
+        <div class="overlay"></div>
+        <div class="circle">
+          <img src="./Pictures/next.js-logo.png" alt="Node.js" />
+        </div>
+        <p>Next.js</p>
+      </div>
+    </div>
+
+    <h3 class="skill-group-title">AI Tools</h3>
+    <div class="skills-grid">
+      <div class="skill-card theme-purple">
+        <div class="overlay"></div>
+        <div class="circle">
+          <img src="./Pictures/chatgpt-icon.png" alt="ChatGPT" />
+        </div>
+        <p>ChatGPT</p>
+      </div>
+
+      <div class="skill-card theme-purple">
+        <div class="overlay"></div>
+        <div class="circle">
+          <img src="./Pictures/gemini-icon.png" alt="Gemini" />
+        </div>
+        <p>Gemini</p>
+      </div>
+
+      <div class="skill-card theme-purple">
+        <div class="overlay"></div>
+        <div class="circle">
+          <img src="./Pictures/cursor-icon.png" alt="Cursor" />
+        </div>
+        <p>Cursor</p>
+      </div>
+
+      <div class="skill-card theme-purple">
+        <div class="overlay"></div>
+        <div class="circle">
+          <img src="./Pictures/github-copilot.png" alt="Copilot" />
+        </div>
+        <p>Github Copilot</p>
+      </div>
+
+      <div class="skill-card theme-purple">
+        <div class="overlay"></div>
+        <div class="circle">
+          <img src="./Pictures/claude-icon.svg" alt="Claude" />
+        </div>
+        <p>Claude</p>
+      </div>
+    </div>
+
+    <h3 class="skill-group-title">Tools & Design</h3>
+    <div class="skills-grid">
+      <div class="skill-card theme-blue">
+        <div class="overlay"></div>
+        <div class="circle">
+          <img src="./Pictures/github-mark.png" alt="GitHub" />
+        </div>
+        <p>GitHub</p>
+      </div>
+
+      <div class="skill-card theme-blue">
+        <div class="overlay"></div>
+        <div class="circle">
+          <img src="./Pictures/figma-01.png" alt="Figma" />
+        </div>
+        <p>Figma</p>
+      </div>
+
+      <div class="skill-card theme-blue">
+        <div class="overlay"></div>
+        <div class="circle">
+          <img src="./Pictures/Vscode-01.png" alt="VS Code" />
+        </div>
+        <p>VS Code</p>
+      </div>
+
+      <div class="skill-card theme-blue">
+        <div class="overlay"></div>
+        <div class="circle">
+          <img src="./Pictures/Canva-01.png" alt="Canva" />
+        </div>
+        <p>Canva</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects" id="projects">
+    <h2>Projects</h2>
+    <p class="projects-subtitle">A few things I’ve built and what I’m working on next.</p>
+
+    <div class="projects-grid">
+      <!-- Project 1: This Portfolio -->
+      <article class="project-card">
+        <div class="project-thumb">
+          <img src="./Pictures/portfolio_cover.jpg" alt="Screenshot of my Portfolio website" width="1280" height="720"
+            loading="lazy">
+        </div>
+        <div class="project-body">
+          <h3>Personal Portfolio</h3>
+          <p>Responsive portfolio with dark mode, section-based navigation, and interactive skill cards.</p>
+          <ul class="project-tags">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+          </ul>
+          <div class="project-actions">
+            <a href="#" class="btn ghost" aria-label="Open live demo of Portfolio">Live Demo</a>
+            <a href="#" class="btn ghost" aria-label="Open source code of Portfolio">Source</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2: Structural Calculator -->
+      <article class="project-card">
+        <div class="project-thumb">
+          <img src="./Pictures/Structural-cover.png" alt="Screenshot of Structural Calculator project" width="1280"
+            height="720" loading="lazy">
+        </div>
+        <div class="project-body">
+          <h3>Structural Calculator</h3>
+          <p>A professional web application for calculating beam reactions in structural engineering.
+            Features interactive diagrams, multiple load types (point, uniform, triangular),
+            and real-time calculations with modern, responsive design.
+            Perfect for civil engineers and students.</p>
+          <ul class="project-tags">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>SVG</li>
+            <li>Civil Engineering</li>
+          </ul>
+          <div class="project-actions">
+            <a href="../structural-calculator/structural-calculator.html" class="btn ghost" target="_blank"
+              rel="noopener">Live Demo</a>
+            <a href="#" class="btn ghost" aria-label="Open source code of Structural Calculator">Source</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 3: Learning Journey -->
+      <article class="project-card">
+        <div class="project-thumb">
+          <img src="./Pictures/React.png" alt="Screenshot of Learning Journey project" width="1280" height="720"
+            loading="lazy">
+        </div>
+        <div class="project-body">
+          <h3>Nextcent Landing Page</h3>
+          <p>Currently learning React & Tailwind. Next up: blog with Next.js and a weather dashboard using public APIs.
+          </p>
+          <ul class="project-tags">
+            <li>React</li>
+            <li>Tailwind</li>
+            <li>Next.js (planned)</li>
+          </ul>
+          <div class="project-actions">
+            <a href="https://nexcent-landing-page-ecru.vercel.app/" class="btn ghost" target="_blank"
+              aria-label="Open live demo of Learning Journey">Live Demo</a>
+            <a href="https://github.com/oOEARNZOo/nexcent-landing-page" class="btn ghost" target="_blank"
+              aria-label="Open learning notes repo">Source</a>
+          </div>
+        </div>
+      </article>
+      <article class="project-card future-project">
+        <div class="project-thumb">
+          <div class="future-placeholder">
+            <span class="future-icon">🚀</span>
+            <span class="future-text">Coming Soon</span>
+          </div>
+        </div>
+
+        <article class="project-card">
+          <div class="project-thumb">
+            <img src="./Pictures/myshop-cover.png" alt="Screenshot of Structural Calculator project" width="1280"
+              height="720" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3>Mini E-commerce Store</h3>
+            <p>
+              A responsive e-commerce web application built with React and Tailwind CSS. Features real-time product
+              search, dynamic shopping cart management with price calculation, and interactive product detail modals.
+              Seamlessly integrated with a RESTful API (FakeStoreAPI) to fetch live product data.
+            </p>
+            <ul class="project-tags">
+              <li>React</li>
+              <li>Tailwind CSS</li>
+              <li>Vite</li>
+              <li>REST API</li>
+            </ul>
+            <div class="project-actions">
+              <a href="https://my-shop-react-gold.vercel.app/" class="btn ghost" target="_blank"
+                aria-label="Open live demo of Learning Journey">Live Demo</a>
+              <a href="https://github.com/oOEARNZOo/my-shop-react" class="btn ghost"
+                aria-label="Open source code of Structural Calculator">Source</a>
+            </div>
+        </article>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+
+  <section class="contact" id="contact">
+    <h2 class="heading">Contact</h2>
+    <p class="contact-subtitle">
+      Let's connect! Whether you have a project, question, or just want to say hi, my inbox is always open.
+    </p>
+
+    <ul class="social-buttons">
+
+      <li style="--i: #ea4335; --j: #c5221f;">
+        <a href="mailto:chanatiptonngern@gmail.com" title="Email">
+          <span class="icon">
+            <img src="./Pictures/email-01.png" alt="Gmail Icon" />
+          </span>
+          <span class="title">Gmail</span>
+        </a>
+      </li>
+
+      <li style="--i: #333333; --j: #000000;">
+        <a href="https://github.com/oOEARNZOo" target="_blank" title="GitHub">
+          <span class="icon">
+            <img src="./Pictures/github-02.png" alt="GitHub Icon" />
+          </span>
+          <span class="title">GitHub</span>
+        </a>
+      </li>
+
+      <li style="--i: #0077b5; --j: #005582;">
+        <a href="https://www.linkedin.com/in/chanatip-tonngern-698941364/" target="_blank" title="LinkedIn">
+          <span class="icon">
+            <img src="./Pictures/linkedin-01.png" alt="LinkedIn Icon" />
+          </span>
+          <span class="title">LinkedIn</span>
+        </a>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- ฟอร์มติดต่อ (ใช้งานจริงต้องเปลี่ยน Formspree FormID) -->
+  <form class="contact-form" action="https://formspree.io/f/yourFormID" method="POST">
+    <div class="field-row">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="_replyto" placeholder="Your Email" required />
+    </div>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit" class="btn dark">Send Message</button>
+  </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>สร้างโดย <strong>Chanatip Tonngern</strong> - Civil Engineer & Front-End Developer</p>
+      <p>© 2025 Portfolio Website. สำหรับการศึกษาเท่านั้น</p>
+    </div>
+  </footer>
+
+  <script src="Type2.js" defer></script>
+
+</body>
+
+</html>
