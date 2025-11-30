@@ -1680,7 +1680,7 @@ body.dark-mode .contact-form button:hover {
 }
 
 .scroll-top::before {
-  content: "⇧";
+  content: "𖤂";
 }
 
 .scroll-top.visible {
