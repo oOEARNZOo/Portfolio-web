@@ -311,20 +311,21 @@ body.dark-mode .pill-nav {
 
 .home-img img {
   width: 100%;
-  max-width: 420px;
+  max-width: 560px; /* ขยายจาก 400px เป็น 560px */
   height: auto;
-  border-radius: 6rem 6rem 6rem 6rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  max-height: 80vh; /* ป้องกันยืดเกิน viewport */
+  border-radius: 1rem;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.10);
   background: #fff;
   display: block;
   margin: 0 auto;
   object-fit: cover;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease, border 0.18s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.18s ease, color 0.18s ease, border 0.18s ease;
 }
 
 .home-img img:hover {
   transform: scale(1.06);
-  box-shadow: 0 0 16px 4px #a78bfa, 0 2px 12px rgba(99, 102, 241, 0.10);
+  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.10);
   z-index: 2;
 }
 
@@ -557,15 +558,17 @@ body.dark-mode .theme-toggle-btn:hover {
   align-items: center;
   justify-content: center;
   height: 100%;
+  margin-top: 100px; /* เพิ่มระยะห่างด้านบน */ 
+  margin-right: 40px; /* เพิ่มระยะห่างด้านขวา */
 }
 
 /* About section image: only one correct rule */
 .about-img img {
   width: auto;
-  max-width: 420px;
-  height: 400px;       /* เพิ่มความสูงให้ภาพ */
+  max-width: 400px;
+  height: 450px;       /* เพิ่มความสูงให้ภาพ */
   max-height: 75vh;    /* ป้องกันไม่ให้ยืดเกิน viewport */
-  border-radius: 6rem;
+  border-radius: 1rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   background: #fff;
   display: block;
@@ -574,6 +577,7 @@ body.dark-mode .theme-toggle-btn:hover {
   transition: transform .18s ease, box-shadow .18s ease;
 }
 
+
 .about-img img:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
@@ -581,14 +585,6 @@ body.dark-mode .theme-toggle-btn:hover {
 
 body.dark-mode .about-img img {
   background: #23232a;
-}
-
-@media (max-width: 900px) {
-  .about-img img {
-    width: 90vw;
-    max-width: 340px;
-    height: auto;
-  }
 }
 
 .about-content {
@@ -735,7 +731,7 @@ body.dark-mode .info-list:hover {
 
 .about-img img:hover {
   transform: scale(1.06);
-  box-shadow: 0 0 9px 4px #a78bfa, 0 2px 3px rgba(99, 102, 241, 0.10);
+  box-shadow: 0 2px 3px rgba(99, 102, 241, 0.10);
   z-index: 1;
 
 }
@@ -776,12 +772,6 @@ body.dark-mode .info-list:hover {
     flex-direction: column;
     align-items: center;
     gap: 32px;
-  }
-
-  .about-img img {
-    width: 90vw;
-    max-width: 340px;
-    height: auto;
   }
 
   .about-row {
