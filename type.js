@@ -144,6 +144,7 @@
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+            console.info('[scroll-reveal] observed:', entry.target);
           entry.target.classList.add('revealed');
           // หยุด observe element นี้หลังจาก reveal แล้ว
           revealObserver.unobserve(entry.target);
@@ -156,7 +157,7 @@
     });
 
     // หา elements ที่ต้องการ animate
-    const elementsToReveal = document.querySelectorAll(`
+    const selectors = `
       .home-text,
       .home-img,
       .about h2,
@@ -164,9 +165,9 @@
       .about-content,
       .about-box,
       .info-list,
-      .skills h2,
+      .skills-interactive h2,
       .skills-subtitle,
-      .skill-group,
+      .skill-group-title,
       .skill-card,
       .projects h2,
       .projects-subtitle,
@@ -176,7 +177,15 @@
       .contact-info,
       .contact-link,
       .contact-form
-    `);
+    `;
+    const elementsToReveal = document.querySelectorAll(selectors);
+
+    // Debug: list how many elements were selected for reveal
+      console.info('[scroll-reveal] selectors:', selectors);
+      console.info('[scroll-reveal] elements selected:', elementsToReveal.length);
+    if (!elementsToReveal.length) {
+      console.warn('[scroll-reveal] no elements were found; check selectors are correct');
+    }
 
     // เพิ่ม class และ observe elements
     elementsToReveal.forEach((element, index) => {

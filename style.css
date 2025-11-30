@@ -163,9 +163,7 @@ body.dark-mode .pill-nav {
   min-height: 80vh;
   padding: 60px 8vw;
   gap: 3rem;
-  background: linear-gradient(120deg, #f7f7f2 70%, #e0e7ff 100%);
-  border-radius: 32px;
-  box-shadow: 0 2px 8px rgba(30, 30, 36, 0.08);
+  background: #f7f7f2;
   position: relative;
   overflow: hidden;
 }
@@ -185,6 +183,12 @@ body.dark-mode .pill-nav {
   line-height: 1.08;
   margin: 0 0 1.5rem;
   font-weight: 700;
+}
+
+/* Prevent the user's full name from breaking into two lines on wider screens */
+.home-text .no-wrap {
+  white-space: nowrap;
+  display: inline-block;
 }
 
 /* waving hand animation */
@@ -339,6 +343,11 @@ body.dark-mode .pill-nav {
     text-align: center;
   }
 
+  /* On smaller screens, allow the name to wrap so it doesn't overflow */
+  .home-text .no-wrap {
+    white-space: normal;
+  }
+
   .home-img {
     margin: 0 auto;
   }
@@ -422,14 +431,6 @@ body.dark-mode .navmenu a.active {
 /* Alternating dark backgrounds per section (keep cohesive indigo theme) */
 /* Alternate purple-ish dark shades */
 body.dark-mode .home {
-  background: #0f1020;
-}
-
-body.dark-mode .about {
-  background: #151332;
-}
-
-body.dark-mode .skills {
   background: #0f1020;
 }
 
@@ -530,7 +531,8 @@ body.dark-mode .theme-toggle-btn:hover {
 .about {
   padding: 100px 0 100px 0;
   /* เพิ่มระยะขอบด้านบน+ล่าง */
-  background: #fff;
+  /* ให้ background ตรงกับ .home */
+  background:#f7f7f2;
 }
 
 .about h2 {
@@ -684,8 +686,8 @@ body.dark-mode .info-list:hover li {
 }
 
 body.dark-mode .about {
-  background: #1f1f27;
-  /* เทาอมฟ้าเข้มกว่าพื้นหลังหลักเล็กน้อย */
+  /* ให้โทนมืดตรงกับ .home ใน dark mode */
+  background: #0f1020;
 }
 
 body.dark-mode .about h2 {
@@ -794,7 +796,7 @@ body.dark-mode .info-list:hover {
 /* Container หลัก */
 .skills-interactive {
   padding: 80px 2rem;
-  background: #fff;
+  background: #f7f7f2;
   text-align: center;
 }
 
@@ -979,7 +981,7 @@ body.dark-mode .info-list:hover {
 
 /* ===== DARK MODE ===== */
 body.dark-mode .skills-interactive {
-  background: #1e1e24;
+  background: #0f1020;
 }
 body.dark-mode .skills-interactive h2, 
 body.dark-mode .skill-group-title { 
@@ -1013,7 +1015,7 @@ body.dark-mode .skill-card:hover p {
 /* ===== Projects Section (Wide Card Version) ===== */
 .projects {
   padding: 80px 2rem;
-  background: #fff;
+  background: #f7f7f2;
 }
 
 .projects h2 {
@@ -1186,7 +1188,7 @@ body.dark-mode .skill-card:hover p {
 }
 
 /* ===== Dark Mode ===== */
-body.dark-mode .projects { background: #18181b; }
+body.dark-mode .projects { background: #0f1020; }
 body.dark-mode .projects h2 { color: #f4f4f5; }
 body.dark-mode .projects-subtitle { color: #a1a1aa; }
 body.dark-mode .project-card { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); }
@@ -1680,6 +1682,12 @@ body.dark-mode .contact-form button:hover {
   opacity: 0;
   transform: translateY(20px);
   z-index: 1000;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.scroll-top::before {
+  content: "⇧";
 }
 
 .scroll-top.visible {
@@ -1749,7 +1757,7 @@ body.dark-mode .scroll-top:hover {
 .footer-content p {
   margin-bottom: 0.5rem;
   opacity: 0.9;
-  color: #000;
+  color: #0f1020;
 }
 
 .footer-content p:last-child {
@@ -1761,16 +1769,19 @@ body.dark-mode .scroll-top:hover {
 .footer-content strong {
   color: #a78bfa;
   font-weight: 600;
-}ิ
+}
 
-
+body.dark-mode .footer {
+  background: #0f1020;
+}
 
 body.dark-mode .footer-content p {
   color: #f7f7f2;
 }
 
 body.dark-mode .footer-content strong {
-  color: #6366f1;
+  color: #a78bfa;
+  font-weight: 600;
 }
 
 /* Responsive สำหรับ footer */
