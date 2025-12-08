@@ -179,10 +179,10 @@ body.dark-mode .pill-nav {
 }
 
 .home-text h1 {
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  line-height: 1.08;
+  line-height: 1.2;
   margin: 0 0 1.5rem;
   font-weight: 700;
+  font-size: clamp(1.5rem, 5vw, 2rem); /* Adjust font size for responsiveness */
 }
 
 /* Prevent the user's full name from breaking into two lines on wider screens */
@@ -374,6 +374,12 @@ body.dark-mode .pill-nav {
     margin: 2rem auto 0 auto;
     max-width: 320px;
     height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-text h2 {
+    margin-top: 20px; /* Adjust this value as needed */
   }
 }
 
@@ -1296,7 +1302,6 @@ body.dark-mode .btn.ghost.disabled {
 .contact p {
   margin-bottom: 40px;
   font-size: 1rem;
-  color: #666;
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -1382,7 +1387,6 @@ body.dark-mode .contact p { color: #bbb; }
   width: 40px;   /* เดิม 28px -> ขยายไอคอนให้ใหญ่ขึ้น */
   height: 40px;
   object-fit: contain;
-  filter: grayscale(100%);
   opacity: 0.7;
 }
 
@@ -1419,154 +1423,7 @@ body.dark-mode .social-buttons li .icon img {
   opacity: 1;
 }
 
-/* --- จัดการฟอร์มติดต่อ --- */
-.contact-info {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 32px;
-  margin-bottom: 32px;
-  flex-wrap: wrap;
-  box-shadow: none;
-  background: none;
-}
 
-.contact-link {
-  color: #232323;
-  text-decoration: none;
-  font-size: 1.08rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.10), 0 2px 12px rgba(30, 30, 36, 0.07);
-  padding: 12px 24px;
-  font-weight: 500;
-  border: 1.5px solid #e0e7ff;
-  /* shortened for snappier hover */
-  transition: transform 0.16s, box-shadow 0.16s, background 0.16s, color 0.16s, border 0.16s;
-}
-
-.contact-link:hover {
-  transform: scale(1.06);
-  color: #fff;
-  background: #6366f1;
-  border-color: #6366f1;
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.18), 0 4px 16px rgba(99, 102, 241, 0.10);
-}
-
-body.dark-mode .contact-link {
-  color: #f7f7f2;
-  background: #23232a;
-  border: 1.5px solid #353545;
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.13), 0 2px 12px rgba(0, 0, 0, 0.13);
-  transition: transform 0.22s, box-shadow 0.22s, background 0.22s, color 0.22s, border 0.22s;
-}
-
-body.dark-mode .contact-link:hover {
-  background-color: #a78bfa;
-  transform: scale(1.06);
-  box-shadow: 0 0 16px 4px #a78bfa, 0 2px 12px rgba(99, 102, 241, 0.10);
-  z-index: 2;
-}
-
-.contact-link:hover span,
-body.dark-mode .contact-link:hover span {
-  color: #1e1e24;
-}
-
-.contact-form {
-  max-width: 520px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.10), 0 2px 16px rgba(99, 102, 241, 0.07);
-  padding: 32px 28px 24px 28px;
-  border: 1.5px solid #e0e7ff;
-}
-
-.contact-form:hover {
-  background: #eef2ff;
-  border-color: #6366f1;
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.18), 0 4px 20px rgba(99, 102, 241, 0.12);
-}
-
-body.dark-mode .contact-form {
-  background: #23232a;
-  border: 1.5px solid #353545;
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.13), 0 2px 16px rgba(0, 0, 0, 0.18);
-}
-
-body.dark-mode .contact-form:hover {
-  background: #2a2a35;
-  border-color: #6366f1;
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.22), 0 4px 20px rgba(99, 102, 241, 0.18);
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  border: 1.5px solid #e0e7ff;
-  border-radius: 12px;
-  padding: 14px 16px;
-  font: inherit;
-  background: #f7f7f2;
-  color: #232323;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  transition: border-color .2s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: #6366f1;
-  background: #fff;
-}
-
-body.dark-mode .contact-form input,
-body.dark-mode .contact-form textarea {
-  background: #18181b;
-  color: #f7f7f2;
-  border: 1.5px solid #353545;
-}
-
-body.dark-mode .contact-form input:focus,
-body.dark-mode .contact-form textarea:focus {
-  background: #23232a;
-  border-color: #a78bfa;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.22);
-}
-
-.contact-form button {
-  align-self: flex-end;
-  background: linear-gradient(90deg, #6366f1 0%, #60a5fa 100%);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 32px;
-  font-size: 1.08rem;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.10);
-  cursor: pointer;
-  transition: background .2s, transform .18s;
-}
-
-body.dark-mode .contact-form button {
-  background: linear-gradient(90deg, #a78bfa 0%, #6366f1 100%);
-  color: #fff;
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.22), 0 2px 8px rgba(99, 102, 241, 0.13);
-}
-
-body.dark-mode .contact-form button:hover {
-  background: linear-gradient(90deg, #6366f1 0%, #a78bfa 100%);
-  box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.22), 0 4px 24px rgba(99, 102, 241, 0.18);
-}
 
 /* =========================
    Scroll Animation Effects
