@@ -1,43 +1,6 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-<!--
-  บันทึกการเรียนรู้ - ส่วน <head>
-
-  วัตถุประสงค์:
-  <head> คือพื้นที่สำหรับข้อมูลที่ browser, search engine, social media preview และระบบภายนอกใช้ทำความเข้าใจหน้าเว็บ
-  ผู้ใช้จะไม่เห็นเนื้อหาส่วนนี้โดยตรง แต่ส่วนนี้มีผลต่อ SEO, การแชร์ลิงก์, การแสดงผลบนมือถือ, สีของ browser UI,
-  การโหลดฟอนต์ และการเชื่อมไฟล์ CSS
-
-  เหตุผลที่ใช้โครงสร้างนี้:
-  สำหรับ portfolio แบบ static site การเก็บ meta tags, font loading, icon library และ stylesheet ไว้ใน <head>
-  เป็นวิธีที่ตรงไปตรงมาและ maintain ง่ายที่สุด เพราะไม่ต้องพึ่ง build tool แต่ยังควบคุม performance, SEO,
-  accessibility และ visual identity ได้ดี
-
-  ทางเลือกอื่น:
-  ถ้าโปรเจกต์ใหญ่ขึ้น อาจใช้ Next.js เพื่อจัดการ metadata รายหน้า หรือใช้ Vite เพื่อ bundle asset และ CSS
-  แต่ในช่วงเรียนพื้นฐาน HTML/CSS/JS แบบ plain file ช่วยให้เข้าใจ browser lifecycle จริงก่อนที่ framework
-  จะซ่อนรายละเอียดเหล่านี้
-
-  ผลต่อ performance:
-  meta viewport ป้องกันปัญหา layout บนมือถือ, preconnect ช่วยลดเวลาเชื่อมต่อไปยัง Google Fonts และ icon CDN,
-  ส่วน CSS ถูกโหลดใน <head> เพื่อให้ browser render หน้าแรกด้วย style ที่ถูกต้องตั้งแต่ต้น ลดอาการ flash ของหน้าเว็บดิบ
-
-  ประเด็น accessibility:
-  title และ description ที่ชัดเจนช่วยให้ผู้ใช้ screen reader, tab manager และ search result เข้าใจ context ของหน้า
-  แต่ metadata ไม่สามารถแทน semantic HTML ใน <body> ได้ ทั้งสองส่วนต้องทำงานร่วมกัน
-
-  ประเด็น responsive design:
-  width=device-width และ initial-scale=1.0 จำเป็นมาก เพราะถ้าไม่มี mobile browser อาจจำลองหน้าเว็บเป็น desktop width
-  แล้วบีบลงในมือถือ ทำให้ตัวอักษรเล็กและ layout เพี้ยน
-
-  ข้อผิดพลาดที่มือใหม่มักทำ:
-  ลืม viewport, ใช้ title กว้างเกินไป เช่น "Portfolio", โหลด font หลายตระกูลเกินจำเป็น, หรือเพิ่ม script หนัก ๆ
-  ก่อน CSS จนทำให้หน้าแรกช้าลง
-
-  แนวทางที่ดี:
-  เขียน metadata ให้สื่อสารคุณค่าของเว็บ, โหลด asset เท่าที่จำเป็น, ใช้ alt/OG image ที่เหมาะสม และมอง <head>
-  เป็นส่วนหนึ่งของคุณภาพ product ไม่ใช่ boilerplate ที่คัดลอกไปเรื่อย ๆ
--->
+<!-- Head: metadata, SEO, social preview, fonts, icons และ stylesheet ของหน้าเว็บ -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,70 +21,12 @@
   <link rel="stylesheet" href="https://unpkg.com/phosphor-icons@2.1.1/src/css/phosphor.css">
   <link rel="stylesheet" href="style.css">
 </head>
-<!--
-  บันทึกการเรียนรู้ - ส่วน <body>
-
-  วัตถุประสงค์:
-  <body> คือพื้นที่ของประสบการณ์จริงที่ผู้ใช้เห็นและโต้ตอบ ได้แก่ navigation, hero, projects, skills, journey,
-  about, contact, footer และ script ที่เพิ่มพฤติกรรมให้หน้าเว็บ
-
-  เหตุผลที่ใช้โครงสร้างนี้:
-  ลำดับของเอกสารถูกจัดจากสิ่งที่ช่วยการเข้าถึงก่อน เช่น skip link ตามด้วย header, main content, utility control,
-  footer และ JavaScript ลำดับนี้ทำให้ทั้งผู้ใช้ทั่วไปและ assistive technology เข้าใจหน้าเว็บได้เป็นธรรมชาติ
-
-  ทางเลือกอื่น:
-  สามารถทำทุกอย่างด้วย <div> ได้ในเชิง visual แต่จะเสียความหมายของเอกสารและทำให้ maintain ยากในระยะยาว
-  ถ้าใช้ React/Next.js ในอนาคต โครงสร้างนี้สามารถแยกเป็น component ได้ แต่ตอนนี้การอยู่ในไฟล์เดียวช่วยให้เห็นภาพรวมง่าย
-
-  ผลต่อ performance:
-  script ใช้ defer ทำให้ browser parse HTML ต่อได้โดยไม่ถูก JavaScript block การ render หน้าแรก ลดโอกาสที่ JS
-  จะ query element ก่อน DOM พร้อม และทำให้ perceived performance ดีกว่าใส่ script blocking ไว้บนสุด
-
-  ประเด็น accessibility:
-  การใช้ landmark เช่น header, nav, main, section, footer ช่วยให้ screen reader ข้ามไปยังส่วนต่าง ๆ ได้
-  ลิงก์และปุ่มถูกเลือกตามหน้าที่จริง: ลิงก์ใช้สำหรับนำทาง ปุ่มใช้สำหรับ action เช่น dark mode
-
-  ประเด็น responsive design:
-  HTML เก็บ content เป็นกลุ่มที่มีความหมาย ส่วน CSS รับผิดชอบการจัด layout ใหม่ตาม viewport ทำให้ mobile layout
-  ไม่ต้องแก้ markup และลดความเสี่ยงที่เนื้อหาจะเรียงผิดความหมาย
-
-  ข้อผิดพลาดที่มือใหม่มักทำ:
-  ใช้ div ซ้อนกันโดยไม่มี landmark, ใช้ button เป็นลิงก์หรือใช้ลิงก์เป็นปุ่ม, ลืม alt text, หรือจัด source order
-  ไม่ตรงกับลำดับการอ่านจริง ทำให้ keyboard และ screen reader ใช้งานยาก
-
-  แนวทางที่ดี:
-  เริ่มจาก HTML ที่มีความหมายก่อน แล้วใช้ CSS จัด layout และใช้ JavaScript เฉพาะสิ่งที่ HTML/CSS ทำไม่ได้
-  แนวคิดนี้ทำให้เว็บยังพอใช้งานได้แม้ CSS หรือ JS โหลดช้า
--->
+<!-- Body: โครงสร้างเนื้อหาที่ผู้ใช้เห็น แบ่งเป็น header, main sections, footer และ script -->
 <body>
-  <!--
-    Accessibility - Skip link:
-    จุดประสงค์คือให้ผู้ใช้คีย์บอร์ดสามารถข้าม navigation ที่ซ้ำทุกหน้าไปยังเนื้อหาหลักได้ทันที
-    วิธีนี้เป็นมาตรฐานของเว็บที่ใส่ใจ accessibility เพราะผู้ใช้ไม่ต้องกด Tab ผ่านเมนูทั้งหมดทุกครั้ง
-    ทางเลือกคือซ่อนเมนูด้วย JavaScript หรือทำ shortcut key เอง แต่ skip link ง่ายกว่า เสถียรกว่า และทำงานได้แม้ JS ไม่โหลด
-    ข้อผิดพลาดที่พบบ่อยคือซ่อน skip link ด้วย display:none ซึ่งทำให้ screen reader และ keyboard focus ใช้ไม่ได้
-  -->
+  <!-- Skip link: ช่วยผู้ใช้คีย์บอร์ดข้าม navigation ไปยังเนื้อหาหลัก -->
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!--
-    Header / Navigation:
-    ส่วนนี้เป็น global navigation ของ portfolio ใช้พาผู้ใช้ไปยัง section หลักและมีปุ่มสลับ theme
-    เหตุผลที่ใช้ <header> + <nav> เพราะให้ semantic landmark ชัดเจนกว่า div ธรรมดา และ aria-label ช่วยบอก screen reader
-    ว่านี่คือ primary navigation
-
-    Alternative:
-    อาจใช้ sidebar navigation หรือ mobile hamburger menu ได้ แต่ portfolio หน้าเดียวที่มี section ไม่มากเหมาะกับ nav แบบ pill
-    เพราะ scan ง่ายและ recruiter เข้าถึง project/contact ได้เร็ว
-
-    Performance:
-    โครงสร้างนี้เบา ไม่มี framework และไม่มี animation หนัก การทำ active state ด้วย class ใน JS ถูกกว่า re-render ทั้ง component
-
-    Responsive:
-    CSS จะทำให้ nav wrap และ scroll แนวนอนในจอเล็ก แทนการบีบตัวอักษรจนอ่านยาก
-
-    Best practice:
-    ใช้ <a href="#section-id"> สำหรับการนำทางภายในหน้า เพราะยังทำงานได้แม้ JavaScript ปิดอยู่
-  -->
+  <!-- Header/Nav: เมนูหลักของหน้าและปุ่มสลับ dark mode -->
   <header class="site-header">
     <nav class="pill-nav" aria-label="Primary navigation">
       <a class="brand" href="#home" aria-label="Go to home">
@@ -158,41 +63,9 @@
     </nav>
   </header>
 
-  <!--
-    Main Content:
-    <main> คือเนื้อหาหลักที่ไม่ซ้ำกับ header/footer ในหน้านี้ ทุก section สำคัญของ portfolio อยู่ภายใน main
-    การมี id="main" ทำให้ skip link ด้านบนกระโดดมาที่จุดนี้ได้โดยตรง
-
-    Best practice:
-    หนึ่งหน้าเว็บควรมี <main> หลักเพียงอันเดียว เพื่อให้ assistive technology เข้าใจโครงสร้างเอกสารได้ชัดเจน
-  -->
+  <!-- Main: รวม section หลักทั้งหมด และเป็น target ของ skip link -->
   <main id="main">
-    <!--
-      Hero Section:
-      จุดประสงค์คือสื่อสาร positioning ของเจ้าของ portfolio ภายในไม่กี่วินาที: เป็น Frontend Developer
-      ที่มีพื้นฐาน Civil Engineering และมี CTA ให้ไปดู projects หรือ contact
-
-      เหตุผลที่เลือก layout แบบข้อความซ้าย / รูปขวา:
-      เป็น pattern ที่ recruiter เข้าใจเร็ว ข้อความนำสายตาก่อน แล้วรูปช่วยสร้างความน่าเชื่อถือและ personality
-      headline ถูกแยกเป็นหลาย <span> เพื่อควบคุม line break ให้สวยทั้ง desktop และ mobile
-
-      Alternative:
-      อาจใช้ centered hero, full-screen background image หรือ video hero ได้ แต่จะเสี่ยงดูเป็น landing page เกินไป
-      สำหรับ portfolio สมัครงาน ควรให้เนื้อหาและ project เข้าถึงเร็วกว่า effect
-
-      Performance:
-      รูป hero ใช้ width/height และ fetchpriority="high" เพราะเป็นภาพสำคัญบน first viewport การกำหนดขนาดช่วยลด layout shift
-      แต่ไม่ควรมี hero animation หนัก เพราะจะกระทบ Largest Contentful Paint
-
-      Accessibility:
-      ปุ่ม CTA เป็นลิงก์จริงเพราะนำทางไป section อื่น icon มี aria-hidden เพื่อไม่ให้ screen reader อ่านซ้ำ
-
-      Responsive:
-      CSS ใช้ grid บน desktop และเปลี่ยนเป็น column บนจอเล็ก ทำให้ข้อความกับรูปไม่เบียดกัน
-
-      Common mistakes:
-      มือใหม่มักใช้ headline ใหญ่เกินไปจน mobile ล้น, ใช้รูปไม่มี alt, หรือทำปุ่มเป็น div ที่กดด้วย keyboard ไม่ได้
-    -->
+    <!-- Hero: แนะนำตัว จุดเด่น และ CTA ไปยัง Projects/Contact -->
     <section class="hero section-shell" id="home">
       <div class="hero-copy">
         <p class="status-badge"><span aria-hidden="true"></span>Available for Junior Front-End roles</p>
@@ -234,33 +107,7 @@
       </div>
     </section>
 
-    <!--
-      Projects Section:
-      จุดประสงค์คือเป็นหลักฐานของทักษะจริง ไม่ใช่แค่บอกว่าใช้เทคโนโลยีอะไรได้ แต่แสดง problem, solution, stack
-      และลิงก์ให้ recruiter ตรวจสอบงานได้ทันที
-
-      เหตุผลที่ใช้ <article> สำหรับ project card:
-      แต่ละ project เป็นเนื้อหาที่อ่านแยกเดี่ยวได้ มีรูป หัวข้อ คำอธิบาย tag และ actions จึงเหมาะกับ article
-
-      Alternative:
-      อาจทำเป็น carousel ได้ แต่ carousel มักซ่อนผลงานบางส่วนและใช้งานยากบน keyboard การใช้ grid เปิดเผยข้อมูลมากกว่า
-      และเหมาะกับ portfolio ที่ recruiter ต้อง scan เร็ว
-
-      Performance:
-      รูป project ใช้ loading="lazy" เพราะอยู่ถัดจาก hero ไม่จำเป็นต้องโหลดพร้อมกันทั้งหมด ช่วยลด network cost ตอนเปิดหน้าแรก
-      width/height ช่วยให้ browser จองพื้นที่ภาพและลด Cumulative Layout Shift
-
-      Accessibility:
-      รูปมี alt ที่อธิบาย screenshot, external links มี rel="noopener noreferrer" เพื่อความปลอดภัยและ performance
-      aria-label ใช้เมื่อข้อความลิงก์อาจไม่พออธิบายปลายทาง
-
-      Responsive:
-      CSS grid จะลดจาก 3 columns เป็น 2 และ 1 columns ตาม viewport ทำให้ card ไม่แคบจนอ่านยาก
-
-      Common mistakes:
-      เขียนคำอธิบาย project เป็น feature list ยาวเกินไป, ไม่มี live link, ใช้คำว่า Github ผิด capitalization,
-      หรือใส่ tag มากจนรบกวน visual hierarchy
-    -->
+    <!-- Projects: แสดงผลงานพร้อมคำอธิบาย tech stack และลิงก์ใช้งานจริง -->
     <section class="projects section-shell" id="projects">
       <div class="section-heading">
         <span class="section-kicker">Selected work</span>
@@ -270,7 +117,7 @@
 
       <div class="projects-grid">
         <article class="project-card featured">
-          <a class="project-media" href="https://my-shop-three-mu.vercel.app/" target="_blank" rel="noopener noreferrer"
+          <a class="project-media" href="https://bamblue-store.vercel.app/" target="_blank" rel="noopener noreferrer"
             aria-label="Open Bamblue Store live demo">
             <img src="./Pictures/myshop2-cover.png" alt="Bamblue Store responsive e-commerce homepage screenshot"
               width="1280" height="720" loading="lazy">
@@ -293,7 +140,7 @@
               <li>Authentication</li>
             </ul>
             <div class="project-actions">
-              <a class="text-link" href="https://my-shop-three-mu.vercel.app/" target="_blank"
+              <a class="text-link" href="https://bamblue-store.vercel.app/" target="_blank"
                 rel="noopener noreferrer">
                 Live Demo <i class="ph ph-arrow-square-out" aria-hidden="true"></i>
               </a>
@@ -357,7 +204,7 @@
               <li>REST API</li>
             </ul>
             <div class="project-actions">
-              <a class="text-link" href="https://bamblue-store.vercel.app/" target="_blank"
+              <a class="text-link" href="https://my-shop-react-gold.vercel.app/" target="_blank"
                 rel="noopener noreferrer">Live Demo <i class="ph ph-arrow-square-out" aria-hidden="true"></i></a>
               <a class="text-link" href="https://github.com/oOEARNZOo/my-shop-react" target="_blank"
                 rel="noopener noreferrer">GitHub <i class="ph ph-github-logo" aria-hidden="true"></i></a>
@@ -456,30 +303,7 @@
       </div>
     </section>
 
-    <!--
-      Skills Section:
-      จุดประสงค์คือสรุปเครื่องมือที่ใช้ได้ในรูปแบบอ่านเร็ว โดยแบ่งเป็นหมวดเพื่อให้ recruiter เข้าใจระดับการทำงาน:
-      Languages, Frameworks & Libraries, AI Tools, Tools & Design
-
-      เหตุผลที่ใช้ <ul>:
-      skills เป็นรายการข้อมูลที่ไม่มีลำดับก่อนหลัง จึงเหมาะกับ unordered list มากกว่า div ล้วน
-
-      Alternative:
-      อาจใช้ progress bar หรือ percent skill ได้ แต่สำหรับ junior developer ตัวเลขเปอร์เซ็นต์มักไม่มีหลักฐานรองรับ
-      badge/card ที่ชัดเจนดู professional และซื่อสัตย์กว่า
-
-      Performance:
-      icon ขนาดเล็กและ layout ด้วย CSS grid เบา ไม่ต้องใช้ JavaScript จัดตำแหน่ง card
-
-      Accessibility:
-      icon ใน skill card ใช้ alt="" เพราะชื่อ skill มี text อยู่แล้ว ถ้าใส่ alt ซ้ำ screen reader จะอ่านซ้ำโดยไม่จำเป็น
-
-      Responsive:
-      grid ปรับจำนวน column ตามหน้าจอ และหมวดที่มีจำนวน card ไม่เท่ากันถูกจัดสมดุลด้วย CSS class เช่น balanced-five
-
-      Common mistakes:
-      ใส่ skill ทุกอย่างที่เคยเห็นแต่ไม่เคยใช้จริง, ใช้สีฉูดฉาดเกินไป, หรือใช้ icon อย่างเดียวไม่มี text
-    -->
+    <!-- Skills: แสดงเทคโนโลยีและเครื่องมือ โดยจัดเป็นหมวดให้อ่านง่าย -->
     <section class="stack section-shell" id="stack">
       <div class="skills-heading">
         <h2>Skills</h2>
@@ -488,7 +312,7 @@
 
       <div class="skill-category">
         <h3>Languages</h3>
-        <ul class="skills-grid" aria-label="Programming languages">
+        <ul class="skills-grid balanced-four" aria-label="Programming languages">
           <li class="skill-card">
             <span class="skill-icon"><img src="./Pictures/Html-01.png" alt="" width="32" height="32"></span>
             <span>HTML5</span>
@@ -501,12 +325,16 @@
             <span class="skill-icon"><img src="./Pictures/javascript-01.svg" alt="" width="32" height="32"></span>
             <span>JavaScript</span>
           </li>
+          <li class="skill-card">
+            <span class="skill-icon"><img src="./Pictures/typescript-01.png" alt="" width="32" height="32"></span>
+            <span>TypeScript</span>
+          </li>
         </ul>
       </div>
 
       <div class="skill-category">
         <h3>Frameworks & Libraries</h3>
-        <ul class="skills-grid balanced-five" aria-label="Frameworks and libraries">
+        <ul class="skills-grid balanced-four" aria-label="Frameworks and libraries">
           <li class="skill-card">
             <span class="skill-icon"><img src="./Pictures/React-01.png" alt="" width="32" height="32"></span>
             <span>React</span>
@@ -520,11 +348,7 @@
             <span>Next.js</span>
           </li>
           <li class="skill-card">
-            <span class="skill-icon text-icon">TS</span>
-            <span>TypeScript</span>
-          </li>
-          <li class="skill-card">
-            <span class="skill-icon text-icon">SB</span>
+            <span class="skill-icon"><img src="./Pictures/supabase-icon.png" alt="" width="32" height="32"></span>
             <span>Supabase</span>
           </li>
         </ul>
@@ -532,7 +356,7 @@
 
       <div class="skill-category">
         <h3>AI Tools</h3>
-        <ul class="skills-grid wide" aria-label="AI tools">
+        <ul class="skills-grid balanced-five" aria-label="AI tools">
           <li class="skill-card">
             <span class="skill-icon"><img src="./Pictures/chatgpt-icon.png" alt="" width="32" height="32"></span>
             <span>ChatGPT</span>
@@ -540,10 +364,6 @@
           <li class="skill-card">
             <span class="skill-icon"><img src="./Pictures/gemini-icon.png" alt="" width="32" height="32"></span>
             <span>Gemini</span>
-          </li>
-          <li class="skill-card">
-            <span class="skill-icon"><img src="./Pictures/cursor-icon.png" alt="" width="32" height="32"></span>
-            <span>Cursor</span>
           </li>
           <li class="skill-card">
             <span class="skill-icon"><img src="./Pictures/github-copilot.png" alt="" width="32" height="32"></span>
@@ -562,7 +382,7 @@
 
       <div class="skill-category">
         <h3>Tools & Design</h3>
-        <ul class="skills-grid balanced-four" aria-label="Tools and design software">
+        <ul class="skills-grid wide" aria-label="Tools and design software">
           <li class="skill-card">
             <span class="skill-icon"><img src="./Pictures/github-mark.png" alt="" width="32" height="32"></span>
             <span>GitHub</span>
@@ -576,6 +396,14 @@
             <span>VS Code</span>
           </li>
           <li class="skill-card">
+            <span class="skill-icon"><img src="./Pictures/cursor-icon.png" alt="" width="32" height="32"></span>
+            <span>Cursor</span>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon"><img src="./Pictures/windsurf-icon.png" alt="" width="32" height="32"></span>
+            <span>Windsurf</span>
+          </li>
+          <li class="skill-card">
             <span class="skill-icon"><img src="./Pictures/Canva-01.png" alt="" width="32" height="32"></span>
             <span>Canva</span>
           </li>
@@ -583,26 +411,7 @@
       </div>
     </section>
 
-    <!--
-      Journey Section:
-      จุดประสงค์คือเล่า narrative ของการเปลี่ยนสายจาก Civil Engineering ไป Front-End Development
-      section นี้ช่วยตอบคำถามว่า "ทำไมพื้นหลังเดิมถึงเกี่ยวข้องกับงานเว็บ"
-
-      เหตุผลที่ใช้ <ol>:
-      journey มีลำดับเวลา จึงควรใช้ ordered list เพื่อให้โครงสร้างเอกสารบอกความหมาย ไม่ใช่แค่หน้าตา timeline
-
-      Alternative:
-      อาจเขียนเป็น paragraph เดียวได้ แต่ timeline scan ง่ายกว่าและช่วยให้ recruiter เห็น progression ของทักษะ
-
-      Performance:
-      timeline ใช้ CSS pseudo-element วาดเส้น ไม่ต้องใช้ SVG หรือ library เพิ่ม
-
-      Accessibility:
-      แม้หน้าตาเป็น timeline แต่ source ยังเป็น list ที่อ่านตามลำดับได้ดีบน screen reader
-
-      Responsive:
-      บน desktop เป็นแนวนอน บน mobile เปลี่ยนเป็นแนวตั้งเพื่อรักษาความอ่านง่ายและลดการเบียดกัน
-    -->
+    <!-- Journey: timeline เล่าเส้นทางจาก Civil Engineering สู่ Front-End/Full-Stack learning -->
     <section class="journey section-shell" id="journey">
       <div class="section-heading compact">
         <span class="section-kicker">Journey</span>
@@ -648,27 +457,7 @@
       </ol>
     </section>
 
-    <!--
-      About Section:
-      จุดประสงค์คืออธิบายตัวตนแบบสั้นแต่มีน้ำหนัก ไม่เล่าประวัติยาวเกินไป และเชื่อม Civil Engineering background
-      เข้ากับวิธีคิดด้าน Front-End, UI/UX, performance และ accessibility
-
-      เหตุผลที่ใช้ <dl>:
-      about-points เป็นคู่ของหัวข้อและคำอธิบาย เช่น Analytical thinking -> ความหมาย จึงเหมาะกับ description list
-      มากกว่า unordered list
-
-      Alternative:
-      อาจทำเป็น biography ยาวหรือ resume table ได้ แต่ portfolio หน้าเดียวควรเน้นสิ่งที่เกี่ยวกับงานที่สมัครโดยตรง
-
-      Performance:
-      รูปใน section นี้ใช้ loading="lazy" เพราะไม่อยู่ใน first viewport ลดภาระ initial load
-
-      Accessibility:
-      alt text ของรูปไม่ควรเขียนแค่ "about image" แต่ควรอธิบายบริบทของภาพ
-
-      Common mistakes:
-      เขียน About แบบกว้าง เช่น "I am passionate" โดยไม่มีหลักฐานหรือ connection กับงานจริง
-    -->
+    <!-- About: สรุป background, mindset และจุดแข็งที่เกี่ยวกับงาน front-end -->
     <section class="about section-shell" id="about">
       <div class="about-copy">
         <span class="section-kicker">About</span>
@@ -703,23 +492,7 @@
       </div>
     </section>
 
-    <!--
-      Contact Section:
-      จุดประสงค์คือทำให้ขั้นตอนถัดไปง่ายที่สุด หลังจาก recruiter สนใจผลงานแล้วควรติดต่อได้ทันที
-
-      เหตุผลที่ใช้ mailto และ external profile links:
-      เป็นวิธีตรงและไม่ต้องมี backend form จึงเหมาะกับ static portfolio ถ้าใช้ contact form จะต้องดูแล spam,
-      validation, backend endpoint และ privacy มากขึ้น
-
-      Performance:
-      ไม่มี third-party form script ทำให้หน้าเบาและลดความเสี่ยงด้าน privacy
-
-      Accessibility:
-      ลิงก์แต่ละช่องทางมี aria-label ชัดเจน ส่วน email/social text แสดงจริงบนหน้าจอจึงใช้งานได้ทั้ง mouse และ keyboard
-
-      Responsive:
-      contact card ใช้ grid บน desktop และเรียงเป็น column บน mobile เพื่อไม่ให้ email ยาวล้น card
-    -->
+    <!-- Contact: ช่องทางติดต่อและ social links สำหรับ recruiter หรือผู้ที่สนใจร่วมงาน -->
     <section class="contact section-shell" id="contact">
       <div class="contact-panel">
         <div>
@@ -758,26 +531,17 @@
     </section>
   </main>
 
-  <!--
-    Scroll To Top:
-    เป็น utility navigation สำหรับหน้าที่ยาวมาก ปุ่มนี้ถูกซ่อนจนกว่าผู้ใช้จะเลื่อนลงมาเพื่อลด visual noise
-    ใช้ <a href="#home"> แทน button เพราะหน้าที่หลักคือ navigation กลับไปยังตำแหน่งในหน้า
-  -->
+  <!-- Scroll to top: ลิงก์ลอยสำหรับกลับไปด้านบนของหน้า -->
   <a href="#home" class="scroll-top" aria-label="Scroll to top">
-    <i class="ph ph-arrow-up" aria-hidden="true"></i>
+    <img src="./Pictures/up-arrow.png" alt="" width="22" height="22" aria-hidden="true">
   </a>
 
-  <!-- Footer: ข้อมูลปิดท้ายเว็บไซต์และเครดิตผู้สร้าง -->
+  <!-- Footer: ข้อมูลปิดท้ายเว็บไซต์ -->
   <footer class="footer">
     <p>© 2026 Chanatip Tonngern. Built with HTML, CSS, and JavaScript.</p>
   </footer>
 
-  <!--
-    JavaScript:
-    defer ทำให้ script รันหลัง HTML ถูก parse แล้ว จึงปลอดภัยต่อการ query DOM
-    ไฟล์ type.js รับผิดชอบ progressive enhancement เช่น dark mode, smooth navigation, active nav,
-    scroll reveal และ scroll-to-top โดยหน้าเว็บยังอ่านเนื้อหาได้แม้ JavaScript ไม่ทำงาน
-  -->
+  <!-- JavaScript: โหลด behavior เช่น dark mode, navigation, reveal animation และ scroll-to-top -->
   <script src="type.js" defer></script>
 </body>
 

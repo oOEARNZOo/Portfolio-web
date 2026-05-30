@@ -964,22 +964,44 @@ body.dark-mode .timeline-dot {
   width: 46px;
   height: 46px;
   place-items: center;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(61, 126, 166, 0.28);
   border-radius: 50%;
-  background: var(--surface-strong);
+  background: #d9ecf7;
   color: var(--text);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 12px 30px rgba(31, 67, 99, 0.18);
   opacity: 0;
   pointer-events: none;
   text-decoration: none;
   transform: translateY(12px);
-  transition: opacity var(--transition), transform var(--transition), background var(--transition);
+  transition: opacity var(--transition), transform var(--transition), background var(--transition),
+    border-color var(--transition);
 }
 
 .scroll-top.visible {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+.scroll-top:hover {
+  background: #c5e4f5;
+  border-color: rgba(61, 126, 166, 0.44);
+}
+
+.scroll-top img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+body.dark-mode .scroll-top {
+  border-color: rgba(183, 228, 255, 0.34);
+  background: #d9ecf7;
+  box-shadow: 0 14px 34px rgba(131, 200, 239, 0.2);
+}
+
+body.dark-mode .scroll-top:hover {
+  background: #bfe1f3;
 }
 
 .footer {
