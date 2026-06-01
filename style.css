@@ -7,10 +7,10 @@
   --surface-strong: #fbfdff;
   --text: #132232;
   --text-soft: #5b6c7b;
-  --muted: #7c8d9d;
+  --muted: #5f7080;
   --border: rgba(38, 72, 103, 0.14);
-  --accent: #3d7ea6;
-  --accent-strong: #215675;
+  --accent: #2f6f96;
+  --accent-strong: #164b68;
   --accent-soft: #d9ecf7;
   --shadow-sm: 0 10px 30px rgba(31, 67, 99, 0.08);
   --shadow-md: 0 22px 60px rgba(31, 67, 99, 0.14);
@@ -21,6 +21,8 @@
   --max-width: 1180px;
   --section-y: clamp(54px, 7vw, 96px);
   --header-height: 88px;
+  --font-display: "Manrope", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --transition: 180ms var(--ease);
 }
@@ -49,18 +51,20 @@ body.dark-mode {
 }
 
 html {
+  width: 100%;
   scroll-behavior: smooth;
 }
 
 body {
+  width: 100%;
+  max-width: 100%;
   min-width: 320px;
   margin: 0;
-  overflow-x: hidden;
   background:
     radial-gradient(circle at top left, rgba(116, 170, 207, 0.34), transparent 34rem),
     linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
   color: var(--text);
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -140,7 +144,7 @@ section {
   align-items: center;
   gap: 22px;
   width: min(100%, var(--max-width));
-  max-width: calc(100vw - 32px);
+  max-width: 100%;
   min-width: 0;
   min-height: 64px;
   margin: 0 auto;
@@ -183,6 +187,7 @@ section {
 }
 
 .brand strong {
+  font-family: var(--font-display);
   font-size: 0.95rem;
   line-height: 1.1;
 }
@@ -203,6 +208,10 @@ section {
   padding: 0;
   margin: 0;
   list-style: none;
+}
+
+.navmenu li {
+  flex: 0 0 auto;
 }
 
 .navmenu a {
@@ -267,27 +276,27 @@ body.dark-mode #moon-icon {
 
 /* Layout shell/hero: จำกัดความกว้างด้วย min()/max-width และใช้ grid เพื่อให้ desktop เป็น 2 columns, mobile เป็น 1 column */
 .section-shell {
-  width: min(calc(100vw - 40px), var(--max-width));
+  width: min(calc(100% - 40px), var(--max-width));
   margin-inline: auto;
   padding-block: var(--section-y);
 }
 
 .section-shell + .section-shell {
-  margin-top: clamp(42px, 6vw, 88px);
+  margin-top: clamp(16px, 3vw, 36px);
 }
 
 .projects + .stack {
-  margin-top: clamp(56px, 7vw, 104px);
+  margin-top: clamp(22px, 4vw, 52px);
 }
 
 .hero {
   display: grid;
   min-height: auto;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.64fr);
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.58fr);
   align-items: center;
-  gap: clamp(34px, 6vw, 76px);
-  padding-top: clamp(30px, 4vw, 54px);
-  padding-bottom: clamp(18px, 3vw, 38px);
+  gap: clamp(28px, 5vw, 60px);
+  padding-top: clamp(20px, 3.2vw, 42px);
+  padding-bottom: clamp(16px, 2.5vw, 30px);
   min-width: 0;
 }
 
@@ -297,11 +306,25 @@ body.dark-mode #moon-icon {
   max-width: 780px;
 }
 
+.hero,
+.projects,
+.stack,
+.about,
+.contact-panel,
+.project-card,
+.project-content,
+.project-media,
+.project-actions,
+.tag-list,
+.section-heading {
+  min-width: 0;
+}
+
 .status-badge {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  margin: 0 0 22px;
+  margin: 0 0 14px;
   padding: 8px 12px;
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -310,6 +333,13 @@ body.dark-mode #moon-icon {
   font-size: 0.84rem;
   font-weight: 700;
   box-shadow: var(--shadow-sm);
+}
+
+.hero-name {
+  margin: 0 0 12px;
+  color: var(--accent-strong);
+  font-size: clamp(0.95rem, 1.4vw, 1.08rem);
+  font-weight: 800;
 }
 
 .status-badge span {
@@ -325,14 +355,15 @@ body.dark-mode #moon-icon {
 .about-copy h2,
 .contact-panel h2 {
   margin: 0;
-  font-size: clamp(2.55rem, 4.65vw, 4.25rem);
+  font-family: var(--font-display);
+  font-size: clamp(2.35rem, 4.2vw, 3.85rem);
   font-weight: 800;
   letter-spacing: 0;
   line-height: 1.02;
 }
 
 .hero h1 {
-  max-width: 14.5ch;
+  max-width: 15ch;
   overflow-wrap: normal;
 }
 
@@ -342,18 +373,19 @@ body.dark-mode #moon-icon {
 .contact-panel p {
   min-width: 0;
   max-width: 680px;
-  margin: 18px 0 0;
+  margin: 14px 0 0;
   color: var(--text-soft);
   font-size: clamp(0.98rem, 1.35vw, 1.12rem);
   line-height: 1.65;
   overflow-wrap: break-word;
+  text-wrap: pretty;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 28px;
+  margin-top: 22px;
 }
 
 .btn {
@@ -390,8 +422,8 @@ body.dark-mode #moon-icon {
 .hero-visual {
   position: relative;
   align-self: center;
-  min-height: 360px;
-  max-height: 520px;
+  min-height: 330px;
+  max-height: 470px;
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -400,7 +432,7 @@ body.dark-mode #moon-icon {
 }
 
 .hero-stack {
-  margin-top: 30px;
+  margin-top: 22px;
 }
 
 .hero-stack span {
@@ -482,6 +514,8 @@ body.dark-mode #moon-icon {
   max-width: 850px;
   font-size: clamp(2rem, 4vw, 3.4rem);
   line-height: 1;
+  overflow-wrap: break-word;
+  text-wrap: balance;
 }
 
 .section-kicker,
@@ -499,15 +533,12 @@ body.dark-mode #moon-icon {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  gap: clamp(18px, 2vw, 24px);
 }
 
 .projects {
-  padding: clamp(28px, 4vw, 42px);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--surface-strong) 82%, transparent);
-  box-shadow: var(--shadow-sm);
+  padding-block: var(--section-y);
+  padding-inline: 0;
 }
 
 .project-card {
@@ -526,21 +557,11 @@ body.dark-mode #moon-icon {
   transform: translateY(-4px);
 }
 
-.project-card.featured {
-  grid-column: auto;
-  grid-template-columns: 1fr;
-}
-
 .project-media {
   display: block;
   overflow: hidden;
   aspect-ratio: 16 / 10;
   background: var(--bg-soft);
-}
-
-.project-card.featured .project-media {
-  aspect-ratio: 16 / 10;
-  min-height: 0;
 }
 
 .project-media img {
@@ -558,12 +579,13 @@ body.dark-mode #moon-icon {
 .project-content {
   display: grid;
   align-content: space-between;
-  gap: 18px;
+  gap: 16px;
   padding: clamp(18px, 2vw, 24px);
 }
 
 .project-content h3 {
   margin: 0;
+  font-family: var(--font-display);
   font-size: clamp(1.08rem, 1.8vw, 1.35rem);
   line-height: 1.15;
 }
@@ -585,6 +607,7 @@ body.dark-mode #moon-icon {
 }
 
 .tag-list li {
+  min-width: 0;
   padding: 7px 10px;
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -592,12 +615,14 @@ body.dark-mode #moon-icon {
   color: var(--text-soft);
   font-size: 0.78rem;
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .project-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 14px;
+  margin-top: 2px;
 }
 
 .text-link {
@@ -607,6 +632,7 @@ body.dark-mode #moon-icon {
   color: var(--accent-strong);
   font-weight: 800;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .text-link:hover {
@@ -617,11 +643,8 @@ body.dark-mode #moon-icon {
 /* Skills: ใช้ grid และ balanced classes เพื่อจัดแถวให้สมดุลโดยไม่ต้องพึ่ง JavaScript */
 .stack {
   max-width: 1120px;
-  padding-inline: clamp(20px, 4vw, 48px);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--surface-strong) 52%, transparent);
-  box-shadow: var(--shadow-sm);
+  padding-block: var(--section-y);
+  padding-inline: 0;
 }
 
 .skills-heading {
@@ -632,6 +655,7 @@ body.dark-mode #moon-icon {
 
 .skills-heading h2 {
   margin: 0;
+  font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   line-height: 1;
 }
@@ -836,6 +860,7 @@ body.dark-mode .timeline-dot {
 .timeline strong {
   display: block;
   margin-top: 18px;
+  font-family: var(--font-display);
   font-size: 1.02rem;
 }
 
@@ -1005,7 +1030,7 @@ body.dark-mode .scroll-top:hover {
 }
 
 .footer {
-  width: min(calc(100vw - 40px), var(--max-width));
+  width: min(calc(100% - 40px), var(--max-width));
   margin: 0 auto;
   padding: 36px 0 52px;
   color: var(--muted);
@@ -1084,6 +1109,7 @@ body.dark-mode .scroll-top:hover {
 
   .hero {
     min-height: auto;
+    gap: 30px;
   }
 
   .hero h1 {
@@ -1091,18 +1117,13 @@ body.dark-mode .scroll-top:hover {
   }
 
   .hero-visual {
-    min-height: 380px;
-    max-height: 460px;
+    min-height: 340px;
+    max-height: 430px;
   }
 
   .section-heading {
     grid-template-columns: 1fr;
     align-items: start;
-  }
-
-  .project-card.featured .project-media {
-    min-height: auto;
-    aspect-ratio: 16 / 10;
   }
 
   .projects-grid {
@@ -1153,13 +1174,19 @@ body.dark-mode .scroll-top:hover {
 
 @media (max-width: 720px) {
   :root {
-    --section-y: 76px;
+    --section-y: 58px;
     --header-height: 132px;
   }
 
   .section-shell,
   .footer {
-    width: calc(100vw - 28px);
+    width: min(calc(100% - 28px), var(--max-width));
+    max-width: var(--max-width);
+  }
+
+  .section-shell + .section-shell,
+  .projects + .stack {
+    margin-top: 10px;
   }
 
   .site-header {
@@ -1169,6 +1196,13 @@ body.dark-mode .scroll-top:hover {
   .pill-nav {
     gap: 10px;
     padding: 10px;
+    max-width: 100%;
+  }
+
+  .navmenu {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    row-gap: 4px;
   }
 
   .brand span:last-child {
@@ -1188,14 +1222,15 @@ body.dark-mode .scroll-top:hover {
   }
 
   .hero {
-    gap: 34px;
-    padding-top: 28px;
+    gap: 24px;
+    padding-top: 18px;
   }
 
   .hero h1 {
-    max-width: 11.5ch;
-    font-size: clamp(2.25rem, 9.8vw, 2.95rem);
-    line-height: 1.02;
+    max-width: 12.5ch;
+    font-size: clamp(2rem, 8.5vw, 2.65rem);
+    line-height: 1.04;
+    overflow-wrap: break-word;
   }
 
   .hero h1 span {
@@ -1206,7 +1241,21 @@ body.dark-mode .scroll-top:hover {
   .section-heading p,
   .about-copy > p,
   .contact-panel p {
+    max-width: 32ch;
     font-size: 1rem;
+    overflow-wrap: anywhere;
+  }
+
+  .project-content p:not(.project-type),
+  .tag-list {
+    max-width: 32ch;
+  }
+
+  .section-heading h2,
+  .about-copy h2,
+  .contact-panel h2 {
+    font-size: clamp(1.85rem, 7.8vw, 2.45rem);
+    line-height: 1.08;
   }
 
   .hero-actions,
@@ -1214,21 +1263,50 @@ body.dark-mode .scroll-top:hover {
     width: 100%;
   }
 
-  .btn {
+  .hero-actions .btn {
     width: 100%;
+    max-width: 100%;
   }
 
   .hero-visual {
-    min-height: 330px;
-    max-height: 420px;
+    width: 100%;
+    min-height: 300px;
+    max-height: 360px;
     border-radius: 24px;
+  }
+
+  .hero-note {
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    padding: 12px;
+  }
+
+  .hero-note span,
+  .hero-note strong {
+    overflow-wrap: break-word;
+  }
+
+  .scroll-reveal-left,
+  .scroll-reveal-right {
+    transform: translateY(18px);
   }
 
   .projects-grid {
     grid-template-columns: 1fr;
   }
 
+  .projects {
+    padding-block: var(--section-y);
+    padding-inline: 0;
+  }
+
   .project-content {
+    gap: 18px;
+  }
+
+  .project-actions {
+    justify-content: flex-start;
     gap: 22px;
   }
 
@@ -1262,27 +1340,33 @@ body.dark-mode .scroll-top:hover {
 }
 
 @media (max-width: 520px) {
-  .pill-nav,
   .section-shell,
   .footer {
-    width: calc(100vw - 28px);
+    width: min(calc(100% - 28px), var(--max-width));
+    max-width: var(--max-width);
   }
 }
 
 @media (max-width: 430px) {
+  .section-shell,
+  .footer {
+    width: min(calc(100% - 24px), var(--max-width));
+    max-width: var(--max-width);
+  }
+
   .hero h1 {
-    font-size: clamp(2.1rem, 9.2vw, 2.65rem);
+    font-size: clamp(1.9rem, 8.8vw, 2.35rem);
   }
 
   .hero-visual {
-    min-height: 300px;
+    min-height: 270px;
+  }
+
+  .hero-stack ul {
+    flex-wrap: wrap;
   }
 
   .project-media {
-    aspect-ratio: 4 / 3;
-  }
-
-  .project-card.featured .project-media {
     aspect-ratio: 4 / 3;
   }
 

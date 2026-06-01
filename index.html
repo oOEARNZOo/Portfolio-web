@@ -16,7 +16,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap"
+    rel="stylesheet">
   <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://unpkg.com/phosphor-icons@2.1.1/src/css/phosphor.css">
   <link rel="stylesheet" href="style.css">
@@ -69,6 +71,7 @@
     <section class="hero section-shell" id="home">
       <div class="hero-copy">
         <p class="status-badge"><span aria-hidden="true"></span>Available for Junior Front-End roles</p>
+        <p class="hero-name">Chanatip Tonngern</p>
         <h1>
           <span>Frontend Developer</span>
           <span>with a Civil</span>
@@ -83,6 +86,9 @@
           <a class="btn primary" href="#projects">View Projects <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
           <a class="btn secondary" href="#contact">Contact Me <i class="ph ph-envelope-simple"
               aria-hidden="true"></i></a>
+          <a class="btn secondary" href="mailto:chanatiptonngern@gmail.com?subject=Resume%20Request">
+            Request Resume <i class="ph ph-file-text" aria-hidden="true"></i>
+          </a>
         </div>
         <div class="hero-stack" aria-label="Technologies I work with">
           <span>Tech I work with</span>
@@ -102,7 +108,7 @@
           height="1100" fetchpriority="high">
         <div class="hero-note">
           <strong>Design-minded builder</strong>
-          <span>React, Next.js, Tailwind CSS, and accessible UI systems.</span>
+          <span>Responsive UI and accessible product flows.</span>
         </div>
       </div>
     </section>
@@ -111,12 +117,12 @@
     <section class="projects section-shell" id="projects">
       <div class="section-heading">
         <span class="section-kicker">Selected work</span>
-        <h2>Projects built around real product flows.</h2>
-        <p>Focused case-study cards that explain the problem, solution, stack, and working links.</p>
+        <h2>Selected projects.</h2>
+        <p>Each project includes a working demo, source code, core features, and the technology used.</p>
       </div>
 
       <div class="projects-grid">
-        <article class="project-card featured">
+        <article class="project-card">
           <a class="project-media" href="https://bamblue-store.vercel.app/" target="_blank" rel="noopener noreferrer"
             aria-label="Open Bamblue Store live demo">
             <img src="./Pictures/myshop2-cover.png" alt="Bamblue Store responsive e-commerce homepage screenshot"
@@ -127,8 +133,8 @@
               <p class="project-type">Full-stack e-commerce platform</p>
               <h3>Bamblue Store</h3>
               <p>
-                A modern K-fashion shopping platform with dynamic product listings, size-based inventory, cart and
-                wishlist flows, OTP authentication, order tracking, reviews, payment confirmation, and admin tools.
+                Full-stack K-fashion store with product listings, size-based stock, cart and wishlist flows, OTP auth,
+                order tracking, reviews, payment confirmation, and admin tools.
               </p>
             </div>
             <ul class="tag-list" aria-label="Bamblue Store tech stack">
@@ -163,8 +169,8 @@
               <p class="project-type">Engineering calculation tool</p>
               <h3>Structural Calculator</h3>
               <p>
-                A civil engineering web app for calculating beam reactions with interactive diagrams, multiple load
-                types, and real-time result updates.
+                Beam reaction calculator with interactive diagrams, multiple load types, and real-time engineering
+                results.
               </p>
             </div>
             <ul class="tag-list" aria-label="Structural Calculator tech stack">
@@ -193,8 +199,7 @@
               <p class="project-type">React product browsing flow</p>
               <h3>Mini E-commerce Store</h3>
               <p>
-                A responsive shopping interface with product search, cart management, price calculation, product detail
-                modals, and API-driven product data.
+                Product browsing app with search, cart totals, product detail modals, and API-driven product data.
               </p>
             </div>
             <ul class="tag-list" aria-label="Mini E-commerce Store tech stack">
@@ -223,8 +228,8 @@
               <p class="project-type">Technical assessment</p>
               <h3>HomeFitTools - Product Listing</h3>
               <p>
-                A responsive no-CMS e-commerce listing page with filters, cart behavior, local storage, and clean
-                product browsing interactions.
+                Responsive no-CMS product listing built for a technical assessment, with filters, cart behavior, and
+                local storage.
               </p>
             </div>
             <ul class="tag-list" aria-label="HomeFitTools tech stack">
@@ -254,8 +259,8 @@
               <p class="project-type">Marketing page practice</p>
               <h3>Nextcent Landing Page</h3>
               <p>
-                A modern landing page exercise built to practice React, Tailwind CSS, reusable sections, and responsive
-                component layout.
+                Responsive landing page practice focused on reusable React sections, Tailwind styling, and clean
+                layout structure.
               </p>
             </div>
             <ul class="tag-list" aria-label="Nextcent Landing Page tech stack">
@@ -283,8 +288,8 @@
               <p class="project-type">Personal website</p>
               <h3>Personal Portfolio</h3>
               <p>
-                A responsive portfolio foundation with dark mode, section navigation, project cards, and animated
-                content reveals.
+                Earlier portfolio version with dark mode, section navigation, project cards, and scroll reveal
+                interactions.
               </p>
             </div>
             <ul class="tag-list" aria-label="Personal Portfolio tech stack">
@@ -461,11 +466,11 @@
     <section class="about section-shell" id="about">
       <div class="about-copy">
         <span class="section-kicker">About</span>
-        <h2>I design interfaces with structure, clarity, and user intent.</h2>
+        <h2>I build interfaces with structure, clarity, and attention to detail.</h2>
         <p>
-          My civil engineering background trained me to think through systems, constraints, and details. I now apply
-          that mindset to front-end development: building responsive UI, improving user flows, and paying attention to
-          performance, accessibility, and visual hierarchy.
+          My civil engineering background trained me to analyze constraints, solve problems carefully, and work with
+          precision. I apply that mindset to front-end development by building responsive interfaces, clean user flows,
+          and accessible UI with a strong eye for detail.
         </p>
         <dl class="about-points">
           <div>
@@ -497,9 +502,10 @@
       <div class="contact-panel">
         <div>
           <span class="section-kicker">Contact</span>
-          <h2>Let’s build something clean and useful.</h2>
+          <h2>Open to junior front-end opportunities.</h2>
           <p>
-            I’m open to junior front-end roles, internships, and product-focused web development opportunities.
+            I’m available for junior front-end roles, internships, and product-focused web projects. Email is the
+            fastest way to reach me.
           </p>
         </div>
         <div class="contact-links" aria-label="Contact links">
