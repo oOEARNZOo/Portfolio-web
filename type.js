@@ -9,12 +9,28 @@
 */
 (function initTheme() {
   const storageKey = "theme";
-  const savedTheme = localStorage.getItem(storageKey);
-  const initialDark = savedTheme ? savedTheme === "dark" : false;
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  const readStoredTheme = () => {
+    const theme = localStorage.getItem(storageKey);
+    return theme === "dark" || theme === "light" ? theme : null;
+  };
+  const savedTheme = readStoredTheme();
+  const initialDark = savedTheme === "dark" || savedTheme === "light"
+    ? savedTheme === "dark"
+    : media.matches;
 
   const applyTheme = (isDark) => {
     document.body.classList.toggle("dark-mode", isDark);
     document.querySelector(".site-header")?.classList.toggle("dark-mode", isDark);
+    document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", isDark ? "#071423" : "#edf5fb");
+
+    const themeStatus = document.getElementById("theme-status");
+    if (themeStatus) {
+      themeStatus.textContent = isDark ? "Dark theme active" : "Light theme active";
+    }
 
     const toggle = document.getElementById("toggle-dark");
     if (toggle) {
@@ -31,6 +47,12 @@
       const nextDark = !document.body.classList.contains("dark-mode");
       applyTheme(nextDark);
       localStorage.setItem(storageKey, nextDark ? "dark" : "light");
+    });
+
+    media.addEventListener("change", (event) => {
+      if (readStoredTheme() === null) {
+        applyTheme(event.matches);
+      }
     });
   };
 
@@ -51,36 +73,64 @@
       .filter((link) => link.getAttribute("href")?.startsWith("#"));
     const primaryNavLinks = Array.from(document.querySelectorAll(".navmenu a"));
     const sections = primaryNavLinks
-      .map((link) => document.querySelector(link.getAttribute("href")))
+      .map((link) => document.getElementById(link.getAttribute("href")?.slice(1)))
       .filter(Boolean);
 
     const reduceMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const setActive = (id) => {
       primaryNavLinks.forEach((link) => {
-        link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+        const active = link.getAttribute("href") === `#${id}`;
+        link.classList.toggle("active", active);
+
+        if (active) {
+          link.setAttribute("aria-current", "page");
+        } else {
+          link.removeAttribute("aria-current");
+        }
       });
+    };
+
+    const scrollToSection = (target, behavior = "auto") => {
+      const header = document.querySelector(".site-header");
+      const headerHeight = header ? header.offsetHeight : 0;
+      const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 12;
+
+      window.scrollTo({
+        top: Math.max(0, top),
+        behavior,
+      });
+    };
+
+    const syncFromHash = () => {
+      const id = window.location.hash.slice(1) || "home";
+      const target = document.getElementById(id);
+      if (!target) return;
+
+      setActive(target.id);
+      scrollToSection(target);
     };
 
     navLinks.forEach((link) => {
       link.addEventListener("click", (event) => {
         const href = link.getAttribute("href");
-        const target = document.querySelector(href);
+        const target = document.getElementById(href.slice(1));
         if (!target) return;
 
         event.preventDefault();
-        const header = document.querySelector(".site-header");
-        const headerHeight = header ? header.offsetHeight : 0;
-        const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 12;
+        scrollToSection(target, reduceMotion() ? "auto" : "smooth");
+        setActive(target.id);
 
-        window.scrollTo({
-          top: Math.max(0, top),
-          behavior: reduceMotion() ? "auto" : "smooth",
-        });
-
-        if (target.id) setActive(target.id);
+        if (window.location.hash !== href) {
+          history.pushState(null, "", href);
+        }
       });
     });
+
+    window.addEventListener("hashchange", syncFromHash);
+    if (window.location.hash) {
+      requestAnimationFrame(syncFromHash);
+    }
 
     if ("IntersectionObserver" in window && sections.length) {
       const observer = new IntersectionObserver(

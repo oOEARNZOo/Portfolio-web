@@ -1,5 +1,16 @@
 {
+  "name": "chanatip-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test tests/*.test.mjs"
+  },
   "devDependencies": {
-    "impeccable": "^2.3.2"
+    "impeccable": "^2.3.2",
+    "vite": "^8.1.5"
   }
 }

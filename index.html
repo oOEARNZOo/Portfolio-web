@@ -6,13 +6,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
     content="Portfolio of Chanatip Tonngern, a junior front-end developer with a civil engineering background, focused on responsive UI, React, Next.js, accessibility, and product-minded web experiences.">
-  <meta name="theme-color" content="#f4efe7">
+  <meta name="author" content="Chanatip Tonngern">
+  <meta name="theme-color" content="#edf5fb">
   <meta property="og:title" content="Chanatip Tonngern | Front-End Developer Portfolio">
   <meta property="og:description"
     content="Product-style front-end developer portfolio featuring selected projects, tech stack, journey, and contact information.">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Chanatip Tonngern Portfolio">
   <meta property="og:image" content="./Pictures/portfolio_cover.jpg">
+  <meta property="og:image:alt" content="Chanatip Tonngern front-end developer portfolio preview">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chanatip Tonngern | Front-End Developer Portfolio">
+  <meta name="twitter:description"
+    content="Product-style front-end developer portfolio featuring selected projects, tech stack, journey, and contact information.">
+  <meta name="twitter:image" content="./Pictures/portfolio_cover.jpg">
   <title>Chanatip Tonngern | Front-End Developer Portfolio</title>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Chanatip Tonngern",
+      "jobTitle": "Front-End Developer",
+      "email": "mailto:chanatiptonngern@gmail.com",
+      "sameAs": [
+        "https://github.com/oOEARNZOo",
+        "https://www.linkedin.com/in/chanatip-tonngern-698941364/"
+      ]
+    }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +65,7 @@
       </a>
 
       <ul class="navmenu">
-        <li><a href="#home">Home</a></li>
+        <li><a href="#home" aria-current="page">Home</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#stack">Stack</a></li>
         <li><a href="#journey">Journey</a></li>
@@ -50,7 +73,8 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <button class="theme-toggle-btn" id="toggle-dark" type="button" aria-label="Toggle dark mode">
+      <button class="theme-toggle-btn" id="toggle-dark" type="button" aria-label="Toggle dark mode"
+        aria-describedby="theme-status">
         <svg id="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
           aria-hidden="true">
           <circle cx="12" cy="12" r="4" />
@@ -62,11 +86,12 @@
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       </button>
+      <span id="theme-status" class="sr-only" aria-live="polite">Light theme active</span>
     </nav>
   </header>
 
   <!-- Main: รวม section หลักทั้งหมด และเป็น target ของ skip link -->
-  <main id="main">
+  <main id="main" tabindex="-1">
     <!-- Hero: แนะนำตัว จุดเด่น และ CTA ไปยัง Projects/Contact -->
     <section class="hero section-shell" id="home">
       <div class="hero-copy">
@@ -104,8 +129,11 @@
       </div>
 
       <div class="hero-visual" aria-label="Portrait of Chanatip Tonngern">
-        <img src="./Pictures/20191204_001430_IMG_9626.JPG" alt="Chanatip Tonngern, front-end developer" width="900"
-          height="1100" fetchpriority="high">
+        <picture>
+          <source type="image/webp" srcset="./Pictures/20191204_001430_IMG_9626.webp">
+          <img src="./Pictures/20191204_001430_IMG_9626.JPG" alt="Chanatip Tonngern, front-end developer" width="1044"
+            height="1568" fetchpriority="high">
+        </picture>
         <div class="hero-note">
           <strong>Design-minded builder</strong>
           <span>Responsive UI and accessible product flows.</span>
@@ -125,8 +153,11 @@
         <article class="project-card">
           <a class="project-media" href="https://bamblue-store.vercel.app/" target="_blank" rel="noopener noreferrer"
             aria-label="Open Bamblue Store live demo">
-            <img src="./Pictures/myshop2-cover.png" alt="Bamblue Store responsive e-commerce homepage screenshot"
-              width="1280" height="720" loading="lazy">
+            <picture>
+              <source type="image/webp" srcset="./Pictures/myshop2-cover.webp">
+              <img src="./Pictures/myshop2-cover.png" alt="Bamblue Store responsive e-commerce homepage screenshot"
+                width="1900" height="908" loading="lazy" decoding="async">
+            </picture>
           </a>
           <div class="project-content">
             <div>
@@ -191,8 +222,11 @@
         <article class="project-card">
           <a class="project-media" href="https://my-shop-react-gold.vercel.app/" target="_blank"
             rel="noopener noreferrer" aria-label="Open Mini E-commerce Store live demo">
-            <img src="./Pictures/myshop-cover.png" alt="Mini E-commerce Store product listing screenshot" width="1280"
-              height="720" loading="lazy">
+            <picture>
+              <source type="image/webp" srcset="./Pictures/myshop-cover.webp">
+              <img src="./Pictures/myshop-cover.png" alt="Mini E-commerce Store product listing screenshot" width="1897"
+                height="907" loading="lazy" decoding="async">
+            </picture>
           </a>
           <div class="project-content">
             <div>
@@ -220,8 +254,11 @@
         <article class="project-card">
           <a class="project-media" href="https://homefit-test.vercel.app/" target="_blank" rel="noopener noreferrer"
             aria-label="Open HomeFitTools live demo">
-            <img src="./Pictures/homefittools-cover.png" alt="HomeFitTools responsive product listing screenshot"
-              width="1280" height="720" loading="lazy">
+            <picture>
+              <source type="image/webp" srcset="./Pictures/homefittools-cover.webp">
+              <img src="./Pictures/homefittools-cover.png" alt="HomeFitTools responsive product listing screenshot"
+                width="1900" height="907" loading="lazy" decoding="async">
+            </picture>
           </a>
           <div class="project-content">
             <div>
@@ -492,8 +529,11 @@
         </dl>
       </div>
       <div class="about-photo">
-        <img src="./Pictures/About_cover.JPG" alt="Chanatip Tonngern working and learning front-end development"
-          width="900" height="700" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="./Pictures/About_cover.webp">
+          <img src="./Pictures/About_cover.JPG" alt="Chanatip Tonngern working and learning front-end development"
+            width="1620" height="1080" loading="lazy" decoding="async">
+        </picture>
       </div>
     </section>
 
@@ -548,7 +588,7 @@
   </footer>
 
   <!-- JavaScript: โหลด behavior เช่น dark mode, navigation, reveal animation และ scroll-to-top -->
-  <script src="type.js" defer></script>
+  <script type="module" src="type.js"></script>
 </body>
 
 </html>
