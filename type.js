@@ -163,6 +163,8 @@
 */
 (function initScrollReveal() {
   const run = () => {
+    document.documentElement.classList.add("js-ready");
+
     const revealTargets = document.querySelectorAll(`
       .hero-copy,
       .hero-visual,

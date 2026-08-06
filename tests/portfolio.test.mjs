@@ -267,6 +267,21 @@ test("document exposes accessible navigation and complete known metadata", async
   assert.match(mainTag, /\btabindex="-1"/);
 });
 
+test("document identifies one featured project", async () => {
+  const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
+  const featuredProjects = html.match(/<article\b[^>]*\bfeatured-project\b[^>]*>/g) ?? [];
+
+  assert.equal(featuredProjects.length, 1);
+  assert.match(
+    featuredProjects[0],
+    /aria-labelledby="featured-project-title"/,
+  );
+  assert.match(
+    html,
+    /<h3\s+id="featured-project-title">\s*Bamblue Store\s*<\/h3>/,
+  );
+});
+
 test("script keeps live accessibility states synchronized", async () => {
   const script = await readFile(new URL("../type.js", import.meta.url), "utf8");
 
@@ -282,6 +297,7 @@ test("script keeps live accessibility states synchronized", async () => {
   assert.match(script, /classList\.toggle\("active", active\)/);
   assert.match(script, /setAttribute\("aria-current", "page"\)/);
   assert.match(script, /removeAttribute\("aria-current"\)/);
+  assert.match(script, /document\.documentElement\.classList\.add\("js-ready"\)/);
 });
 
 test("styles protect touch, focus, overflow, and hidden accessible text", async () => {
@@ -292,6 +308,7 @@ test("styles protect touch, focus, overflow, and hidden accessible text", async 
 
   assert.match(css, /overflow-x:\s*clip/);
   assert.match(css, /text-wrap:\s*balance/);
+  assert.match(css, /\.js-ready\s+\.scroll-reveal/);
 
   const currentPageBlock = extractCssBlock(
     css,
