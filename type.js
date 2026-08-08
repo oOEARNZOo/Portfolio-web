@@ -237,3 +237,41 @@
     run();
   }
 })();
+
+/*
+  Hero tilt: รูปโปรไฟล์เอียงเบา ๆ ตามตำแหน่งเมาส์ ปิดอัตโนมัติเมื่อ reduce motion หรืออุปกรณ์ไม่มี hover (touch)
+  ใช้ inline transform บน wrapper แยกจาก .hero-visual เพื่อไม่ชนกับ transform ของ scroll reveal
+*/
+(function initHeroTilt() {
+  const run = () => {
+    const card = document.querySelector(".hero-visual");
+    const tilt = document.querySelector(".hero-visual-tilt");
+    if (!card || !tilt) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const noHover = window.matchMedia("(hover: none)");
+    if (reduceMotion.matches || noHover.matches) return;
+
+    const maxTilt = 6;
+
+    const handleMove = (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      tilt.style.transform = `perspective(900px) rotateX(${(-y * maxTilt).toFixed(2)}deg) rotateY(${(x * maxTilt).toFixed(2)}deg)`;
+    };
+
+    const resetTilt = () => {
+      tilt.style.transform = "";
+    };
+
+    card.addEventListener("mousemove", handleMove);
+    card.addEventListener("mouseleave", resetTilt);
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run);
+  } else {
+    run();
+  }
+})();

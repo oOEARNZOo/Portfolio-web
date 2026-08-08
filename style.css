@@ -87,9 +87,11 @@ body::before {
   z-index: -1;
   pointer-events: none;
   content: "";
-  background-image: linear-gradient(rgba(61, 126, 166, 0.06) 1px, transparent 1px),
+  background-image: linear-gradient(rgba(61, 126, 166, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61, 126, 166, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(61, 126, 166, 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(61, 126, 166, 0.045) 1px, transparent 1px);
-  background-size: 48px 48px;
+  background-size: 192px 192px, 192px 192px, 48px 48px, 48px 48px;
   mask-image: linear-gradient(to bottom, black, transparent 70%);
 }
 
@@ -375,11 +377,33 @@ body.dark-mode #moon-icon {
 }
 
 .status-badge span {
+  position: relative;
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: #3f9f67;
   box-shadow: 0 0 0 5px rgba(63, 159, 103, 0.14);
+}
+
+.status-badge span::after {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  content: "";
+  background: #3f9f67;
+  animation: status-pulse 2.2s ease-out infinite;
+}
+
+@keyframes status-pulse {
+  from {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(2.8);
+  }
 }
 
 .hero h1,
@@ -397,6 +421,40 @@ body.dark-mode #moon-icon {
 .hero h1 {
   max-width: 15ch;
   overflow-wrap: normal;
+}
+
+.hero h1 span {
+  display: block;
+  opacity: 0;
+  animation: hero-line-in 560ms var(--ease) forwards;
+}
+
+.hero h1 span:nth-child(1) {
+  animation-delay: 80ms;
+}
+
+.hero h1 span:nth-child(2) {
+  animation-delay: 180ms;
+}
+
+.hero h1 span:nth-child(3) {
+  animation-delay: 280ms;
+}
+
+.hero h1 span:nth-child(4) {
+  animation-delay: 380ms;
+}
+
+@keyframes hero-line-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-subtitle,
@@ -464,11 +522,17 @@ body.dark-mode #moon-icon {
   box-shadow: var(--shadow-lg);
 }
 
+.hero-visual-tilt {
+  width: 100%;
+  height: 100%;
+  transition: transform 200ms var(--ease);
+}
+
 .hero-stack {
   margin-top: 22px;
 }
 
-.hero-stack span {
+.hero-stack > span {
   display: block;
   margin-bottom: 12px;
   color: var(--text-soft);
@@ -486,16 +550,82 @@ body.dark-mode #moon-icon {
 }
 
 .hero-stack li {
+  position: relative;
   display: grid;
   width: 34px;
   height: 34px;
   place-items: center;
+  opacity: 0;
+  animation: hero-stack-in 480ms var(--ease) forwards;
+}
+
+.hero-stack li:nth-child(1) {
+  animation-delay: 60ms;
+}
+
+.hero-stack li:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.hero-stack li:nth-child(3) {
+  animation-delay: 180ms;
+}
+
+.hero-stack li:nth-child(4) {
+  animation-delay: 240ms;
+}
+
+.hero-stack li:nth-child(5) {
+  animation-delay: 300ms;
+}
+
+.hero-stack li:nth-child(6) {
+  animation-delay: 360ms;
+}
+
+@keyframes hero-stack-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-stack img {
   width: 28px;
   height: 28px;
   object-fit: contain;
+  transition: transform var(--transition);
+}
+
+.hero-stack li:hover img {
+  transform: translateY(-2px);
+}
+
+.hero-stack-label {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, 4px);
+  transition: opacity var(--transition), transform var(--transition);
+  pointer-events: none;
+}
+
+.hero-stack li:hover .hero-stack-label {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 .hero-visual img {
@@ -704,10 +834,21 @@ body.dark-mode .project-card:hover {
   text-underline-offset: 4px;
 }
 
-/* Skills: ใช้ grid และ balanced classes เพื่อจัดแถวให้สมดุลโดยไม่ต้องพึ่ง JavaScript */
+/* Skills: chip แบบ flex-wrap ต่อหมวด จัดกึ่งกลางเป็นบล็อกโฟกัสแยกจังหวะจากหน้าที่เหลือ */
 .stack {
   padding-block: var(--section-y);
   padding-inline: 0;
+}
+
+.stack .section-heading {
+  max-width: 640px;
+  margin: 0 auto 26px;
+  text-align: center;
+}
+
+.skill-category {
+  max-width: 900px;
+  margin-inline: auto;
 }
 
 .skill-category + .skill-category {
@@ -720,12 +861,14 @@ body.dark-mode .project-card:hover {
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.08em;
+  text-align: center;
   text-transform: uppercase;
 }
 
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
   padding: 0;
   margin: 0;
@@ -735,15 +878,15 @@ body.dark-mode .project-card:hover {
 .skill-card {
   display: flex;
   align-items: center;
-  gap: 8px;
-  min-height: 40px;
-  padding: 8px 14px;
+  gap: 9px;
+  min-height: 44px;
+  padding: 10px 16px;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--surface);
   box-shadow: none;
   color: var(--text);
-  font-size: 0.88rem;
+  font-size: 0.94rem;
   font-weight: 700;
   transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition),
     background var(--transition);
@@ -762,15 +905,15 @@ body.dark-mode .skill-card:hover {
 
 .skill-icon {
   display: grid;
-  width: 20px;
-  height: 20px;
-  flex: 0 0 20px;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
   place-items: center;
 }
 
 .skill-icon img {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   object-fit: contain;
 }
 
@@ -1211,10 +1354,6 @@ body.dark-mode .scroll-top:hover {
     overflow-wrap: break-word;
   }
 
-  .hero h1 span {
-    display: block;
-  }
-
   .hero-subtitle,
   .section-heading p,
   .about-copy > p,
@@ -1279,12 +1418,7 @@ body.dark-mode .scroll-top:hover {
     grid-template-columns: 1fr;
   }
 
-  .featured-project {
-    grid-template-columns: 1fr;
-  }
-
   .featured-project .project-media {
-    min-height: 0;
     aspect-ratio: 16 / 10;
   }
 
